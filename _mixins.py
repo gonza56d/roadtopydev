@@ -11,6 +11,9 @@ class Vehicle(ABC):
 
     model = 'Vehicle with default model'
 
+    def __init__(self) -> None:
+        self.model = ''
+
     @abstractmethod
     def travel(self):
         pass

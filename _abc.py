@@ -4,6 +4,9 @@ and make your class abstract."""
 from abc import ABC, abstractclassmethod, abstractmethod
 
 
+from modulo import _a
+
+
 class Animal(ABC):
 
     @abstractmethod

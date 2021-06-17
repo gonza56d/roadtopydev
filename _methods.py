@@ -3,10 +3,10 @@ class Climate:
 
     current = 'snow'
 
-    #@staticmethod
-    #def access():
-    #    Climate.current = 'hehe'
-    #    print(Climate.current)
+    @staticmethod
+    def access():
+        Climate.current = 'clima'
+        print(Climate.current)
 
     @classmethod
     def access(cls):
