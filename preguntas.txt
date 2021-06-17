@@ -1,0 +1,5 @@
+
+mutables vs inmutables?
+
+es la tupla realmente inmutable? (los ids cambian... aunque no pueda cambiar su valor)
+
