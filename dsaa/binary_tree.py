@@ -32,19 +32,21 @@ class BinaryTreeSearchNode:
 
         if self.left:
             node += self.left.in_order_traversal()
+        
         node.append(self.data)
 
         if self.right:
             node += self.right.in_order_traversal()
+        
         return node
 
     def search(self, value) -> int:
         if value == self.data:
-            return self.data
+            return True
         if value < self.data:
-            return self.left.search(value) if self.left else None
-        else:
-            return self.right.search(value) if self.right else None
+            return self.left.search(value) if self.left else False
+        elif value > self.data:
+            return self.right.search(value) if self.right else False
 
 
 root = BinaryTreeSearchNode(15)
@@ -59,4 +61,4 @@ root.add_child(17)
 root.add_child(4)
 print(root)
 print(root.in_order_traversal())
-print(root.search(21))
+print(root.search(2))
