@@ -1,0 +1,59 @@
+Maxi  11:30 AM
+qué necesitas saber de eso?
+11:31
+me acuerdo que era actulizar objetos (observadores) cuando se modifica uno (el observado)
+11:31
+esa es la idea del patron
+
+
+
+Mauricio Cleveland  11:01 AM
+Hola holaaaaaaa
+
+
+
+
+
+11:01
+te tengo abandonado
+11:01
+mira, call y new te lo pueden preguntar a la hora de construir un singleton
+11:02
+Dale una mirada rapida al patron Observer en python, sabemos que no es nativo pero se puede implementar
+
+Gonza García  11:02 AM
+:open_mouth: interesante
+11:03
+genial, gracias!! :cool-doge:
+11:03
+existe alguna razon por la que se desearia conseguir un singleton? borg no simplificaba ese trabajo? :think:
+
+Mauricio Cleveland  11:06 AM
+Son dos enfoques
+11:07
+Singleton es para mantener persistencia en variables globales de configuracion
+11:08
+Borg es enfocado a instancias
+
+Gonza García  11:08 AM
+ahhhhh va, genial
+11:08
+super claro
+
+Mauricio Cleveland  11:08 AM
+Recuerda que el GC no rompe el singleton
+11:09
+porque? chan chan
+
+Gonza García  11:09 AM
+:joy: lo averiguaremos en el siguiente episodio
+11:09
+:nerd_face:
+
+Mauricio Cleveland  11:10 AM
+jajaja si, pero si haces la prueba, cuando dejas de referenciar al singleton, este sigue en memoria. Para que lo consideres
+:+1::skin-tone-2:
+1
+
+11:10
+despues investigas porque
