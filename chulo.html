@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="Webpage description goes here" />
+    <meta charset="utf-8">
+    <title>Change_me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <!--asi importarias el css
+    <link rel="stylesheet" href="css/style.css">
+    -->
+</head>
+
+<body>
+
+
+<div id="divSpanish"><!--Al principio está visible-->
+    Hola, que onda?
+</div>
+<div id="divEnglish" class="hidden"><!--Al principio está oculto-->
+    Hi, whats up?
+</div>
+
+<button id="btnChangeLanguage" onclick="clickedChangeLanguage()">Change Language</button>
+
+<!--Esto deberias ponerlo separado en un archivo css e incluirlo en la pagina-->
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+
+<!--Esto deberias ponerlo separado en un archivo js e incluirlo en la pagina-->
+<script>
+    let divSpanish = document.getElementById('divSpanish');
+    let divEnglish = document.getElementById('divEnglish');
+
+    function clickedChangeLanguage() {
+        if (divSpanish.className === 'hidden') {
+            divEnglish.className = 'hidden';
+            divSpanish.className = '';
+        } 
+        else if (divEnglish.className === 'hidden') {
+            divEnglish.className = '';
+            divSpanish.className = 'hidden';
+        }
+    }
+</script>
+
+
+    <!--y asi el importarias el js
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    -->
+
+</body>
+</html>

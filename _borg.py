@@ -1,26 +1,15 @@
 
 class Borg:
 
-    _shared_state = {}
+    __shared_state = {}
 
-    def __init__(self) -> None:
-        self.__dict__ = self._shared_state
-
-
-class Corg(Borg):
-    pass
+    def __init__(self):
+        self.__dict__ = self.__shared_state
 
 
-class Dorg(Borg):
-    pass
-
-
-a = Corg()
-a.queso = 'rico'
-print(id(a._shared_state))
-print(id(a.__dict__))
-b = Dorg()
-print(b.queso)
-
-print(id(b._shared_state))
-print(id(b.__dict__))
+a = Borg()
+a.comida_favorita = 'milanesa'
+print(id(Borg._Borg__shared_state))
+print(id(a._Borg__shared_state))
+b = Borg()
+print(b.comida_favorita)

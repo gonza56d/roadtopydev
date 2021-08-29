@@ -15,6 +15,6 @@ class Person:
     name = CapitalizedString()
 
 
-cleve = Person()
-cleve.name = 'mauricio'
-print(cleve.name)
+person = Person()
+person.name = 'gonza'
+print(person.name)
