@@ -3,6 +3,10 @@ class Climate:
 
     current = 'snow'
 
+    @classmethod
+    def whatever(cls):
+        pass
+
     @staticmethod
     def access():
         Climate.current = 'clima'
@@ -14,5 +18,13 @@ class Climate:
         print(Climate.current)
 
 
-Climate.access()
-print(Climate.current)
+class Dummy(Climate):
+    pass
+
+
+d = Dummy()
+print(dir(Dummy))
+
+
+#Climate.access()
+#print(Climate.current)

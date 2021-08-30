@@ -1,18 +1,14 @@
-class Attr:
-    pass
-
-
 class Something:
 
-    class_attr = Attr()
+    class_attr = 'clase'
 
     def __init__(self) -> None:
-        self.instance_attr = 0
+        self.instance_attr = 'instancia'
 
 
 s = Something()
-s.class_attr = 'hola'
+Something.class_attr = 'hola'
 b = Something()
-print(type(s.class_attr))
-print(type(b.class_attr))
-print(type(Something.class_attr))
+print(s.instance_attr)
+print(b.instance_attr)
+print(Something.class_attr)

@@ -14,7 +14,12 @@ class Person:
 
     name = CapitalizedString()
 
+    def __init__(self, name: str) -> None:
+        self.name = name
 
-person = Person()
-person.name = 'gonza'
+
+person = Person('gonza')
+p2 = Person('alguien')
+print(p2.name)
 print(person.name)
+print(person.__dict__)
