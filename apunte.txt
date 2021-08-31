@@ -1,0 +1,156 @@
+ABC:
+    Clases abstractas en Python. No son como las clases abstractas de otros
+    lenguajes como Java, sino que se parecen mas a las interfaces. Proveen
+    metodos que pueden contener el decorador @abstractmethod, el cual al
+    intentar acceder a una clase que hereda de esta clase abstracta, evalua
+    que la subclase esté implementando todos los @abstractmethods de la
+    superclase abstracta, en caso contrario arrojara una excepcion (TypeError).
+
+Arguments:
+    En Python, los argumentos pueden ser tanto posicionales como por keyword.
+    A su vez, estos pueden tener o no un valor por defecto, lo que los vuelve
+    opcionales a la hora de llamar a la funcion. A su vez, podemos definir que
+    una funcion recibe n argumentos posicionales (el tipico *args, aunque la palabra
+    args es solo una convencion, lo importante es el asterisco) como tambien podemos
+    definir que una funcion recibe n argumentos keyword (el tipico **kwargs,
+    aunque la palabra kwargs es solo una convecion, lo importante es el doble
+    asterisco).
+    Dentro de la funcion, *args se convierte en una tupla ('args') y **kwargs
+    se convierte en un diccionario ('kwargs').
+    Tambien podemos desempaquetar tuplas como n args, y diccionarios como n kwargs,
+    a la hora de llamar una funcion.
+
+Attrs:
+    Python provee dos tipos de atributos: atributos de clase y atributos de
+    instancia. Los atributos de clase son compartidos por todas las instancias
+    de la clase cuando de acceder al valor se trata, mientras que cuando se
+    modifica su valor (desde una instancia de la clase), hay dos posibles 
+    escenarios dependiendo si el tipo del atributo es mutable o inmutable:
+    si es mutable, el valor se modificará en la clase y en todas sus instancias
+    (por ejemplo, hacer append de un elemento en una lista definida como class attr),
+    mientras que si es inmutable, se le dará a la instancia un namespace nuevo
+    para esta variable como si fuera un atributo de instancia con el nuevo valor
+    (manteniendo ademas el de la clase en su correspondiente namespace),
+    pero el valor de la clase y de las demas instancias permanecerán como estaban.
+    En el caso de que el valor sea reasignado, se cumple la misma regla que en
+    los inmutables (por ejemplo, que el valor original sea una lista, y se le
+    reasigne un diccionario, u otra lista). 
+
+Borg:
+    Un enfoque similar al singleton, pero que en lugar de mantener maximo
+    una sola instancia de una clase determinada, hace que cada instancia nueva
+    que se crea sea completamente identica a la original (primera creada),
+    ademas de que si cualquiera de estas instancias se modifica, todas las demas
+    lo harán.
+    Una forma de implementarlo es declarar un atributo de clase de tipo dict
+    en la clase Borg (que en lo posible sea de acceso privado), y en el metodo
+    init de esta clase, copiar la referencia al built-in attr __dict__ en este diccionario.
+
+Builtins:
+    Existen 14 tipos nativos en python, estos se dividen en mutables e inmutables:
+    mutables: lista, diccionario, set, y clases definidas por el usuario
+    (esta ultima no es un atributo nativo pero amerita mencionarlo acá).
+    inmutables: string, integers, floats, complex numbers, byte, bytearray,
+    memoryview, tuplas, frozensets, booleans, range.
+
+Callabe:
+    Una objeto callable es aquel que implementa el metodo built-tin __call__,
+    todas las funciones y metodos son callables (todo en Python es un objeto,
+    las funciones y metodos tambien). Permite que un objeto sea llamado como
+    una funcion "ordinaria" en lugar de acceder a él como un objeto mismo y
+    podemos implementar el comportamiento de esto.
+
+Decorators:
+    Un decorador es un wrapper, es decir una funcion que envuelve a otra. El
+    decorador es una funcion que envuelve (wraps) a la funcion decorada, esto
+    nos permite añadir comportamiento antes y despues la ejecucion de la
+    funcion decorada.
+
+Descriptors:
+    Los descriptors son instancias de clases que implementan el built-in method
+    __get__, pueden ademas implementar tambien el metodo __set__. Cuando se
+    implementa solo el __get__ se conoce como "descriptor" mientras que
+    cuando se implementan ambos __get__ y __set__ se conoce como "data descriptor".
+    Esto nos permite implementar y encapsular como se comporta el acceso y la
+    asignacion a una variable (get y set, conceptos traidos de la poo).
+    El decorador @property es un ejemplo de un descriptor ya implementado en Python,
+    donde si ademas añadimos otro metodo con @funcion_decorada.setter, estamos
+    implementando el metodo __set__.
+
+Eq:
+    El built-in method __eq__ permite definir en una clase cómo deberian dos
+    instancias de la misma ser evaluadas si son idénticas, ignorando si son en efecto
+    la misma instancia o no (utilizando el operador ==).
+
+Fixtures:
+    Feature principal de la libreria pytest (libreria de testing alternativa a
+    unittest), donde estos son funciones decoradas que se comportan como si fueran
+    mocks, los fixtures se inyectan en las funciones de los test cases. Un enfoque
+    diferente a unittest que es identico al unittest de Java.
+
+GC:
+    Python posee un Garbage Collector que libera los espacios de memoria ocupados
+    por referencias que ya no se utilizan. Para entender como funciona el mismo:
+    TODAS las variables en Python poseen 3 cosas: un valor, un tipo, y un conteo
+    de cuántas referencias se encuentran apuntando a esta variable. Cuanto este
+    conteo es igual a 0, el GC libera este espacio en memoria eliminando la variable.
+    Existen en Python variables ya asignados por defecto (por ejemplo los strings
+    con cierta longitud y enteros hasta cierto rango, siempre apuntaran a la misma
+    direccion de memoria virtual y seran asignados cuando el programa arranque).
+    Tip: la implementacion del singleton en Python funciona gracias a que el acceso
+    a la instancia original se mantiene referenciado en un atributo de clase del
+    singleton (las clases son variables que viven durante todo el ciclo de vida
+    de la ejecucion del programa), por ende el conteo de referencias a esta instancia
+    nunca llega a 0, al menos que deliberadamente eliminemos el atributo de clase
+    o lo referenciemos hacia otra variable.
+
+Method types:
+    Existen en python 3 tipos de metodos (ademas de las funciones "ordinarias"
+    sueltas fuera de una clase):
+    metodos de instancia (self como primer parametro),
+    metodos estaticos (decorados por @staticmethod),
+    metodos de clase (decorados por @classmethod, recibiendo cls como primer param).
+    Los metodos de instancia se acceden unicamente desde instancias de una clase,
+    llamarlos desde la clase misma arrojará un error diciendo que falta el argumento
+    "self" (la instancia), estos pueden acceder tanto a atributos de instancia
+    como de clase.
+    Los metodos estaticos pueden ser llamados tanto desde la clase donde son
+    delarados como desde una instancia de esta, pero solo pueden acceder
+    a los atributos de la clase.
+    Los metodos de clase pueden ser llamados unicamente desde la clase donde
+    son declarados y solo pueden acceder y modificar los atributos de la misma,
+    mas no los de sus instancias.
+
+Mixins:
+    Un enfoque para lograr sacarle mas provecho a la herencia multiple,
+    donde un Mixin es una superclase que provee una funcionalidad minimalista
+    y muy especifica, en lugar de cubrir algo mucho mas grande como en el caso
+    de una superclase "tipica". Normalmente se utiliza en el desarrollo de
+    frameworks. En el caso de Django y Django REST Framework se encuentran varios.
+    Una buena practica a tener en cuenta es heredar siempre los Mixins a la izquierda,
+    y las superclases "tipicas" a la derecha. Esto por el MRO de Python utilizado
+    para resolver la herencia multiple.
+
+MRO:
+    Method resolution order. Metodo de resolucion utilizado en Python para
+    resolver la herencia múltiple, donde cuando se accede a un atributo o metodo
+    de una clase (subclase en el caso de que esté heredando otras), primero se
+    busca el atributo/metodo dentro de los namespaces de la instancia (si fue
+    llamado desde una), luego dentro en los namespaces de la clase misma, luego
+    en la primer clase heredada (izquierda) y hacia "arriba" de las heredadas
+    por esta, luego en la siguiente a la derecha y hacia "arriba" de las heredadas
+    por esta, and so on...
+
+Observer pattern:
+    Patron de diseño donde una funcion (subscriber) se suscribe a otra, donde
+    esta ultima al ejecutarse envia una notificación y todas las funciones suscritas
+    son ejecutadas tras este evento. Este patrón de diseño se enfoca en facilitar
+    el hecho de que las funcionalidades sean facilmente "plugables": si queremos
+    deshabilitar una funcionalidad, quitamos su(s) suscripcion(es).
+
+Singleton:
+    Un patron de diseño donde una clase puede tener como máximo una instancia.
+    En Python puede implementarse referenciando la primer instancia creada
+    dentro de el built-in method __new__ a un atributo de clase, y luego retornar
+    siempre esta instancia. De esta manera no importa cuantas instancias creemos
+    de la clase Singleton, siempre será el mismo objeto que se creó la primera vez.
