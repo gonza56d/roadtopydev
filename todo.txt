@@ -1,9 +1,0 @@
-
-tipos primitivos de python:
-    string, entero, booleano
-    (creo)
-
-
-"python siempre por referencia excepto cuando los tipos de dato pasados a la funcion son primitivos"
-
-estudiar diferencia entre "por referencia" y "por valor"
