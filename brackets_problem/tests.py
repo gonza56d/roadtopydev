@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from parameterized import parameterized
 
-from .brackets import has_valid_brackets
+from .code_format import CodeFormatValidator
 
 
 class TestBracketsValidator(TestCase):
@@ -41,6 +41,7 @@ class TestBracketsValidator(TestCase):
     def test_validator_success(self, is_valid: bool) -> None:
         value = self.get_value(is_valid)
 
-        result = has_valid_brackets(value)
+        validator = CodeFormatValidator(value)
+        result = validator.has_valid_format()
 
         assert result is is_valid
